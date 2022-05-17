@@ -1,26 +1,20 @@
 import type { NextPage } from 'next'
-import { css } from '@emotion/react';
-
-const style = {
-	title: css({
-		fontSize: '3rem'
-	}),
-	dropDown__itemList: css`
-		width: 100%;
-		color: #333;
-		background: #fff;
-		transition: height 0.3s ease 0s;
-		overflow: hidden;
-		&.is-open {
-			overflow: visible;
-		}
-	`,
-}
+import Link from 'next/link'
+import Image from 'next/image'
+import styles from '../styles/Home.module.css'
+import { css } from '@emotion/react'
+import HeadComponent from './template/Head'
+import MV from './template/MV'
 
 const About: NextPage = () => {
 	return (
 		<>
-			<h2 css={style.title}>About Page</h2>
+			<HeadComponent title='TOP' description='dummy' />
+
+			<MV title='ABOUT' subTitle='subtitle subtitle' />
+
+			<footer className={styles.footer}>
+			</footer>
 		</>
 	)
 }
