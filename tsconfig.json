@@ -19,7 +19,7 @@
 		"paths": {
 			"@src/*": ["src/*"],
 			"@style/*": ["src/styles/*"],
-			"@component/*": ["src/components/*"],
+			"@components/*": ["src/components/*"],
 			"@template/*": ["src/template/*"],
 		}
 	},

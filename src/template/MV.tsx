@@ -1,6 +1,6 @@
 import React from 'react';
 import { css } from '@emotion/react';
-import LinkButton from '../components/Button/Link';
+import LinkButton from '@src/components/Button/LinkButton';
 
 type Props = {
 	isHome?: boolean,
