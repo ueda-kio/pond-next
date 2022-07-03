@@ -3,12 +3,6 @@ import Link from 'next/link'
 import { css, SerializedStyles } from '@emotion/react';
 import { gradationModule } from '../../styles/Utils';
 
-type ButtonProps = {
-	type?: 'button' | 'submit' | 'reset';
-	text: string;
-	_css?: SerializedStyles;
-}
-
 type LinkProps = {
 	href: string;
 	text: string;
@@ -73,16 +67,12 @@ const styleButton = (_css?: SerializedStyles): SerializedStyles => {
 	`
 }
 
-export const Button: React.FC<ButtonProps> = ({ text, type = 'button', _css }) => {
-	return (
-		<button type={type} css={styleButton(_css)}>{text}</button>
-	)
-};
-
-export const LinkButton: React.FC<LinkProps> = ({ text, href, _css }) => {
+const LinkButton: React.FC<LinkProps> = ({ text, href, _css }) => {
 	return (
 		<Link href={href}>
 			<a css={styleButton(_css)}>{text}</a>
 		</Link>
 	)
 };
+
+export default LinkButton;

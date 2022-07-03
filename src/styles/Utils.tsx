@@ -1,4 +1,3 @@
-import React from "react";
 import { css, SerializedStyles } from "@emotion/react";
 
 type BreakPoint = 320 | 375 | 576 | 768 | 1080 | 1450;
