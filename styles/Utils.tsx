@@ -13,7 +13,6 @@ const gradationModule: (direction?: 'right' | 'left' | 'top' | 'bottom') => Seri
 		background-image: linear-gradient(to ${direction}, #7633a4 0%, #250d65 51%, #7633a4 100%);
 		${size}
 		background-clip: text;
-		color: rgba(118,51,164,0);
 	`;
 };
 

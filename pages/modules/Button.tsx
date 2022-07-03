@@ -1,11 +1,16 @@
 import React from 'react';
-import { css, SerializedStyles } from "@emotion/react";
+import Link from 'next/link'
+import { css, SerializedStyles } from '@emotion/react';
 import { gradationModule } from '../../styles/Utils';
 
-type Props = {
-	tag?: React.ElementType
-	href?: string;
-	type?: string;
+type ButtonProps = {
+	type?: 'button' | 'submit' | 'reset';
+	text: string;
+	_css?: SerializedStyles;
+}
+
+type LinkProps = {
+	href: string;
 	text: string;
 	_css?: SerializedStyles;
 }
@@ -20,8 +25,8 @@ const styleButton = (_css?: SerializedStyles): SerializedStyles => {
 		height: 60px;
 		padding: 0 35px;
 		border-radius: 50px;
-		text-decoration: none;
 		color: #fff;
+		font-weight: bold;
 		${gradationModule()}
 		transition: box-shadow 0.3s, background-position .3s;
 		cursor: pointer;
@@ -34,7 +39,7 @@ const styleButton = (_css?: SerializedStyles): SerializedStyles => {
 			top: 50%;
 			right: 20px;
 			display: inline-block;
-			/* font-family: "Font Awesome 5 Free"; */
+			/* font-family: 'Font Awesome 5 Free'; */
 			font-weight: 900;
 			color: #fff;
 			transform: translateY(-50%);
@@ -68,16 +73,16 @@ const styleButton = (_css?: SerializedStyles): SerializedStyles => {
 	`
 }
 
-
-const Button: React.FC<Props> = ({ tag: Tag = 'a', text, href, type, _css }) => {
-	const isButton = Tag === 'a';
-	if (isButton && typeof href === 'undefined') {
-		console.error('');
-	}
-	if (!isButton && typeof type === 'undefined') return null;
+export const Button: React.FC<ButtonProps> = ({ text, type = 'button', _css }) => {
 	return (
-		<Tag type={type} href={href} css={styleButton(_css)}>{text}</Tag>
+		<button type={type} css={styleButton(_css)}>{text}</button>
 	)
-}
+};
 
-export default Button;
+export const LinkButton: React.FC<LinkProps> = ({ text, href, _css }) => {
+	return (
+		<Link href={href}>
+			<a css={styleButton(_css)}>{text}</a>
+		</Link>
+	)
+};

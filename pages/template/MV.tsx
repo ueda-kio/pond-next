@@ -1,6 +1,6 @@
 import React from 'react';
 import { css } from '@emotion/react';
-import Button from '../modules/Button';
+import { LinkButton } from '../modules/Button';
 
 type Props = {
 	isHome?: boolean,
@@ -79,7 +79,7 @@ const MV: React.FC<Props> = ({isHome = false, title, subTitle}) => {
 						<div css={style.mv.home.inner}>
 							<h1 css={style.mv.home.title}>WEB DESIGN SPECIALIST</h1>
 							<p css={style.mv.home.caption}>お客様の夢を叶えるWebサイトを制作</p>
-							<Button text='contact' tag='a' href='#' _css={style.modifier.button} />
+							<LinkButton text='contact' href='#' _css={style.modifier.button} />
 						</div>
 					</div >
 				</>
