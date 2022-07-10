@@ -21,6 +21,7 @@ const titleStyle = (_css?: SerializedStyles): {[x: string]: SerializedStyles} =>
 		}),
 		main: css({
 			fontSize: '3rem',
+			backgroundClip: 'text'
 		}, {
 			...gradationModule(),
 		}),

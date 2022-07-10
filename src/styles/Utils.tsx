@@ -11,7 +11,6 @@ const gradationModule: (direction?: 'right' | 'left' | 'top' | 'bottom') => Seri
 	return css`
 		background-image: linear-gradient(to ${direction}, #7633a4 0%, #250d65 51%, #7633a4 100%);
 		${size}
-		background-clip: text;
 	`;
 };
 
