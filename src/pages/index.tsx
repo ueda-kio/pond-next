@@ -69,7 +69,26 @@ const style = {
 	}
 }
 
-const Home: React.FC = () => {
+const Home: NextPage<Post[]> = (contents) => {
+	const array = Object.values(contents);
+	const serviceContents = [
+		{
+			img: '/images/jessy-smith.jpg',
+			title: 'WEBサイト制作',
+			desc: '新規サイトはもちろん、サイトリニューアルやランディングページ制作も行っております。'
+		},
+		{
+			img: '/images/luke-chesser.jpg',
+			title: 'アナリティクス',
+			desc: '新規サイトはもちろん、サイトリニューアルやランディングページ制作も行っております。'
+		},
+		{
+			img: '/images/pexels-cottonbro.jpg',
+			title: 'ディレクション',
+			desc: '新規サイトはもちろん、サイトリニューアルやランディングページ制作も行っております。'
+		},
+	]
+
 	return (
 		<>
 			<HeadComponent title='TOP' description='dummy' />
@@ -79,98 +98,34 @@ const Home: React.FC = () => {
 			<section css={[style.section, style.news.section]}>
 				<Title main='NEWS' sub='お知らせ' />
 				<ul css={style.news.list}>
-					<li css={style.news.listItem}>
-						<Link href='#'>
-							<a css={style.news.listLink}>
-								<p>
-									<time>2020.02.02</time>
-									<span>お知らせ</span>
-								</p>
-								<p css={style.news.listTitle}>
-									あおいうあおいうあおいうあおいうあおいうあおいうあおいうあおいうあおいうあおいうあおいうあおいうあおいうあ
-								</p>
-							</a>
-						</Link>
-					</li>
-					<li css={style.news.listItem}>
-						<Link href='#'>
-							<a css={style.news.listLink}>
-								<p>
-									<time>2020.02.02</time>
-									<span>お知らせ</span>
-								</p>
-								<p css={style.news.listTitle}>
-									あおいうあおいうあおいうあおいうあおいうあおいうあおいうあおいうあおいうあおいうあおいうあおいうあおいうあ
-								</p>
-							</a>
-						</Link>
-					</li>
-					<li css={style.news.listItem}>
-						<Link href='#'>
-							<a css={style.news.listLink}>
-								<p>
-									<time>2020.02.02</time>
-									<span>お知らせ</span>
-								</p>
-								<p css={style.news.listTitle}>
-									あおいうあおいうあおいうあおいうあおいうあおいうあおいうあおいうあおいうあおいうあおいうあおいうあおいうあ
-								</p>
-							</a>
-						</Link>
-					</li>
-					<li css={style.news.listItem}>
-						<Link href='#'>
-							<a css={style.news.listLink}>
-								<p>
-									<time>2020.02.02</time>
-									<span>お知らせ</span>
-								</p>
-								<p css={style.news.listTitle}>
-									あおいうあおいうあおいうあおいうあおいうあおいうあおいうあおいうあおいうあおいうあおいうあおいうあおいうあ
-								</p>
-							</a>
-						</Link>
-					</li>
-					<li css={style.news.listItem}>
-						<Link href='#'>
-							<a css={style.news.listLink}>
-								<p>
-									<time>2020.02.02</time>
-									<span>お知らせ</span>
-								</p>
-								<p css={style.news.listTitle}>
-									あおいうあおいうあおいうあおいうあおいうあおいうあおいうあおいうあおいうあおいうあおいうあおいうあおいうあ
-								</p>
-							</a>
-						</Link>
-					</li>
+					{array.map((content, i) => (
+						<li css={style.news.listItem} key={Number(i)}>
+							<Link href='#'>
+								<a css={style.news.listLink}>
+									<p>
+										<time>2020.02.02</time>
+										<span>お知らせ</span>
+									</p>
+									<p css={style.news.listTitle}>
+										{content.title}
+									</p>
+								</a>
+							</Link>
+						</li>
+					))}
 				</ul>
 			</section>
 
 			<section css={style.section}>
 				<Title main='SERVICE' sub='事業内容' />
 				<ul css={style.service.list}>
-					<li>
-						<Image src='/images/jessy-smith.jpg' width='670' height='422' alt='' />
-						<h3 css={style.service.title}>WEBサイト制作</h3>
-						<p css={css({marginTop: '10px'})}>
-							新規サイトはもちろん、サイトリニューアルやランディングページ制作も行っております。
-						</p>
-					</li>
-					<li>
-						<Image src='/images/luke-chesser.jpg' width='670' height='422' alt='' />
-						<h3 css={style.service.title}>アナリティクス</h3>
-						<p css={css({marginTop: '10px'})}>
-							新規サイトはもちろん、サイトリニューアルやランディングページ制作も行っております。
-						</p>
-					</li>
-					<li>
-						<Image src='/images/pexels-cottonbro.jpg' width='670' height='422' alt='' />
-						<h3 css={style.service.title}>ディレクション</h3>
-						<p css={css({marginTop: '10px'})}>
-							新規サイトはもちろん、サイトリニューアルやランディングページ制作も行っております。
-						</p>
-					</li>
+					{serviceContents.map((content, i) => (
+						<li key={Number(i)}>
+							<Image src={content.img} width='670' height='422' alt='' />
+							<h3 css={style.service.title}>{content.title}</h3>
+							<p css={css({ marginTop: '10px' })}>{content.desc}</p>
+						</li>
+					))}
 				</ul>
 				<LinkButton text='MORE' href='#' _css={style.service.button} />
 			</section>
@@ -178,4 +133,34 @@ const Home: React.FC = () => {
 	)
 };
 
-export default Home
+type Post = {
+	id: string;
+	createdAt: string;
+	updatedAt: string;
+	publishedAt: string;
+	revisedAt: string;
+	title: string;
+	subTitle: string;
+	body: string;
+	thumbnail: {
+		url: string;
+		height: string;
+		width: string;
+	}
+};
+
+export const getStaticProps: GetStaticProps<Post[]> = async () => {
+	const res = await fetch('https://3b6bho47qa.microcms.io/api/v1/blog', {
+		headers: {
+			'X-MICROCMS-API-KEY': 'e161262cb6dc4fb4a7c0b8e5c06b6fda0b04',
+		},
+	});
+	const json = await res.json();
+	const contents: Post[] = json.contents;
+
+	return {
+		props: { ...contents },
+	}
+};
+
+export default Home;
