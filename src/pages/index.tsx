@@ -48,6 +48,17 @@ const style = {
 			margin: '5px 0 0',
 			WebkitBoxOrient: 'vertical',
 			WebkitLineClamp: '2',
+		}),
+		listTag: css({
+			display: 'inline-block',
+			minWidth: '82px',
+			maxHeight: '19px',
+			borderRadius: '50px',
+			backgroundColor: '#e8e8e8',
+			fontSize: '1.1rem',
+			fontWeight: 'bold',
+			textAlign: 'center',
+			lineHeight: '19px',
 		})
 	},
 	service: {
@@ -68,6 +79,12 @@ const style = {
 		})
 	}
 }
+
+const st = (str: string) => {
+	const te = str.slice(0, 10);
+	const ar = te.split('-');
+	return ar.join('/');
+};
 
 const Home: NextPage<Post[]> = (contents) => {
 	const array = Object.values(contents);
@@ -99,12 +116,12 @@ const Home: NextPage<Post[]> = (contents) => {
 				<Title main='NEWS' sub='お知らせ' />
 				<ul css={style.news.list}>
 					{array.map((content, i) => (
-						<li css={style.news.listItem} key={Number(i)}>
-							<Link href='#'>
+						<li css={style.news.listItem} key={content.id}>
+							<Link href='/blog/[content.id]' as={`/blog/${content.id}`}>
 								<a css={style.news.listLink}>
-									<p>
-										<time>2020.02.02</time>
-										<span>お知らせ</span>
+									<p css={css({ display: 'flex', gap: '15px' })}>
+										<time>{st(content.publishedAt)}</time>
+										<span css={style.news.listTag}>{content.tag}</span>
 									</p>
 									<p css={style.news.listTitle}>
 										{content.title}
@@ -120,7 +137,7 @@ const Home: NextPage<Post[]> = (contents) => {
 				<Title main='SERVICE' sub='事業内容' />
 				<ul css={style.service.list}>
 					{serviceContents.map((content, i) => (
-						<li key={Number(i)}>
+						<li key={content.title}>
 							<Image src={content.img} width='670' height='422' alt='' />
 							<h3 css={style.service.title}>{content.title}</h3>
 							<p css={css({ marginTop: '10px' })}>{content.desc}</p>
@@ -142,6 +159,7 @@ type Post = {
 	title: string;
 	subTitle: string;
 	body: string;
+	tag: string;
 	thumbnail: {
 		url: string;
 		height: string;
