@@ -43,7 +43,7 @@ const style = {
 				justifyContent: 'center',
 				alignItems: 'center',
 				width: '100%',
-				height: '300px',
+				height: '200px',
 				background: 'url("/images/hero_page.jpg") no-repeat top center / cover'
 			}),
 			inner: css({
@@ -52,11 +52,11 @@ const style = {
 				textAlign: 'center'
 			}),
 			title: css({
-				fontSize: '3.6rem',
+				fontSize: '3rem',
 				fontWeight: 'bold',
 			}),
 			caption: css({
-				fontSize: '1.4rem',
+				fontSize: '1.3rem',
 				fontWeight: 'bold',
 			})
 		}
