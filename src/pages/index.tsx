@@ -7,6 +7,7 @@ import MV from '@template/MV'
 import Title from '@components/Title'
 import LinkButton from '@components/Button/LinkButton';
 import mediaQuery from '@style/mediaQuery';
+import st from '@utils/st';
 
 const style = {
 	section: css({
@@ -79,12 +80,6 @@ const style = {
 		})
 	}
 }
-
-const st = (str: string) => {
-	const te = str.slice(0, 10);
-	const ar = te.split('-');
-	return ar.join('/');
-};
 
 const Home: NextPage<Post[]> = (contents) => {
 	const array = Object.values(contents);
