@@ -17,6 +17,9 @@ const nextConfig = {
 			}
 		})
 		return cfg;
+	},
+	images: {
+		domains: ['images.microcms-assets.io']
 	}
 }
 
