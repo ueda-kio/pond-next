@@ -165,7 +165,7 @@ type Post = {
 export const getStaticProps: GetStaticProps<Post[]> = async () => {
 	const res = await fetch('https://3b6bho47qa.microcms.io/api/v1/blog', {
 		headers: {
-			'X-MICROCMS-API-KEY': 'e161262cb6dc4fb4a7c0b8e5c06b6fda0b04',
+			'X-MICROCMS-API-KEY': process.env.API_KEY as string,
 		},
 	});
 	const json = await res.json();
