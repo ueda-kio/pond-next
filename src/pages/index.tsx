@@ -11,13 +11,13 @@ import st from '@utils/st';
 
 const style = {
 	section: css({
-		margin: '80px 0 0 0',
+		margin: '80px auto 0 auto',
 		padding: '0 20px'
 	}),
 	news: {
 		section: css({
 			maxWidth: '917px',
-			[mediaQuery['pc']]: {
+			[mediaQuery.pc]: {
 				display: 'flex',
 				gap: '50px',
 				padding: 20,
@@ -26,7 +26,7 @@ const style = {
 		list: css({
 			maxHeight: '380px',
 			overflowY: 'auto',
-			[mediaQuery['pc']]: {
+			[mediaQuery.pc]: {
 				width: '730px',
 			}
 		}),
@@ -38,6 +38,8 @@ const style = {
 		listLink: css({
 			display: 'block',
 			padding: '10px 0',
+			cursor: 'pointer',
+			//TODO :hover時にlistTitleのスタイルを変えたい
 		}),
 		listHead: css({
 			display: 'flex',
@@ -68,7 +70,13 @@ const style = {
 			flexDirection: 'column',
 			gap: '40px',
 			maxWidth: '500px',
-			margin: '0 auto'
+			margin: '0 auto',
+			[mediaQuery.pc]: {
+				display: 'grid',
+				gridTemplateColumns: 'repeat(3, 1fr)',
+				gap: '50px',
+				maxWidth: '1400px',
+			}
 		}),
 		title: css({
 			marginTop: '15px',
@@ -112,7 +120,7 @@ const Home: NextPage<Post[]> = (contents) => {
 				<ul css={style.news.list}>
 					{array.map((content, i) => (
 						<li css={style.news.listItem} key={content.id}>
-							<Link href='/blog/[content.id]' as={`/blog/${content.id}`}>
+							<Link href='/blog/[id]' as={`/blog/${content.id}`}>
 								<a css={style.news.listLink}>
 									<p css={css({ display: 'flex', gap: '15px' })}>
 										<time>{st(content.publishedAt)}</time>
