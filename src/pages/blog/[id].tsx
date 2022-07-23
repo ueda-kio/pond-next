@@ -2,6 +2,7 @@ import type { GetStaticProps, InferGetStaticPropsType, NextPage } from 'next'
 import Link from 'next/link'
 import Blog from '@src/template/Blog';
 import MV from '@template/MV';
+import Header from '@template/Header';
 
 type Post = {
 	id: string;
@@ -25,6 +26,7 @@ type Props = InferGetStaticPropsType<typeof getStaticProps>;
 const Post: NextPage<Props> = (contents) => {
 	return (
 		<>
+			<Header />
 			<MV title='NEWS' subTitle='お知らせ' />
 			<Blog
 				body={contents.body}
