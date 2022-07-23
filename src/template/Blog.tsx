@@ -21,10 +21,13 @@ type Post = {
 };
 
 const style = {
-	wrapper: css({
+	structure: css({
 		maxWidth: '790px',
 		margin: '0 auto',
-		padding: '40px 20px 0',
+		padding: '40px 20px 0'
+	}),
+	wrapper: css({
+		marginTop: '40px',
 		'& h1': css({
 			fontSize: '2.2rem'
 		}),
@@ -49,25 +52,31 @@ const style = {
 		gap: '15px'
 	}),
 	mv: css({
-		marginTop: '10px'
+		position: 'relative',
+		width: '100%',
+		height: '300px',
+		marginTop: '10px',
 	})
 }
 
 const Blog: React.FC<Post> = ({ body, thumbnail, tag, publishedAt }) => {
 	return (
-		<>
+		<div css={style.structure}>
+
 			<div css={style.header}>
 				<time>{st(publishedAt)}</time>
 				<Tag text={tag} />
 			</div>
-			<Image src={thumbnail.url} width={thumbnail.width} height={thumbnail.height} alt='' css={style.mv} />
+			<div css={style.mv}>
+				<Image src={thumbnail.url} width={thumbnail.width} height={thumbnail.height} alt='' objectFit='cover' layout='fill' />
+			</div>
 			<div
 				css={style.wrapper}
 				dangerouslySetInnerHTML={{
 					__html: `${body}`
 				}}
 			></div>
-		</>
+		</div>
 	);
 };
 
